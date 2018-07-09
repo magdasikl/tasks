@@ -41,8 +41,8 @@ public class TaskController {
     @RequestMapping(method = RequestMethod.POST,value = "createTask")
     public void createTask(TaskDto taskDto) {
     }
-    @RequestMapping(method = RequestMethod.GET,value = "findTasksById")
-    public Task findTasksById(Long id){
-        return taskMapper.mapToTask(service.getAllTasksById(id));
+    @RequestMapping(method = RequestMethod.GET,value = "findTaskById")
+    public TaskDto findTaskById(Long id){
+        return taskMapper.mapToTaskDto(service.getTaskById(id));
     }
 }

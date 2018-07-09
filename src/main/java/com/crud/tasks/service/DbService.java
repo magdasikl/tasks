@@ -16,7 +16,7 @@ public class DbService {
         return repository.findAll();
     }
 
-    public Task getAllTasksById(Long id) {
-        return repository.findAllById(id);
+    public Task getTaskById(Long id) {
+        return repository.findTaskById(id);
     }
 }

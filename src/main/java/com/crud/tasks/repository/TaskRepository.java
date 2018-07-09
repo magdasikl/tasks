@@ -9,6 +9,6 @@ public interface TaskRepository extends CrudRepository<Task, Long> {
     @Override
     List<Task> findAll();
 
-    Task findAllById(Long id);
+    Task findTaskById(Long id);
 }
 
