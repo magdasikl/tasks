@@ -38,13 +38,18 @@ public interface TaskRepository extends CrudRepository<Task, Long> {
     @Override
     Task save(Task task);
 
-    default Optional<Task> deleteTaskById(Long id) {
-        Optional<Task> task = findById(id);
-        task.ifPresent(this::delete);
-        return task;
-    }
+    void delete(Long id);
+
+//    default Optional<Task> deleteTaskById(Long id) {
+//        Optional<Task> task = findById(id);
+//        task.ifPresent(this::delete);
+//        return task;
+//    }
+
+    List<Task> findTasksByTitle(String nazwa);
+
 
     @Override
-    void delete(Task task);
+    Iterable<Task> findAll(Iterable<Long> longs);
 }
 
