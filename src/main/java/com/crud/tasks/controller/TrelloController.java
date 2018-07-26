@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -22,10 +22,13 @@ public class TrelloController {
     public void getTrelloBoards() {
 
         List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
-        trelloBoards.stream()
+        List<TrelloBoardDto> board = trelloBoards.stream()
                 .filter(s -> s.getName().contains("Kodilla"))
                 .filter(s ->s.getId()!=null)
-                .forEach(s->System.out.println(s.getId()+" "+ s.getName()));
+                .collect(Collectors.toList());
+
+        board.stream()
+               .forEach(s->System.out.println(s.getId()+" "+ s.getName()));
 
  //       trelloBoards.forEach(trelloBoardDto -> System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName()));
 
