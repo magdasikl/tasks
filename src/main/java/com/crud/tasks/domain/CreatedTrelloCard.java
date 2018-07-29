@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @AllArgsConstructor
