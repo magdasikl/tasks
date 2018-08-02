@@ -31,8 +31,8 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @EnableSwagger2
 public class CoreConfiguration implements WebMvcConfigurer {
 
-    private static final String NO_ERROR_REGEX = "(?!.*error).*$";
-    private static final String NO_TRELLO_REGEX = "(?!.*trello).*$";
+//    private static final String NO_ERROR_REGEX = "(?!.*error).*$";
+//    private static final String NO_TRELLO_REGEX = "(?!.*trello).*$";
     private static final String NO_TRELLO_PAC = "com.crud.tasks.controller";
 
     @Bean
@@ -46,16 +46,16 @@ public class CoreConfiguration implements WebMvcConfigurer {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(NO_TRELLO_PAC))
-                .paths(pathse())
+                .paths(PathSelectors.any())
                 .build();
     }
 
 
-    private Predicate<String> pathse() {
-        return and(
-                regex(NO_ERROR_REGEX),
-                regex(NO_TRELLO_REGEX));
-    }
+//    private Predicate<String> pathse() {
+//        return and(
+//                regex(NO_ERROR_REGEX),
+//                regex(NO_TRELLO_REGEX));
+//    }
 
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
