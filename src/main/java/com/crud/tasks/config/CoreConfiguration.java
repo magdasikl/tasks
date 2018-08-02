@@ -46,7 +46,7 @@ public class CoreConfiguration implements WebMvcConfigurer {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(NO_TRELLO_PAC))
- //               .paths(pathse())
+                .paths(pathse())
                 .build();
     }
 
