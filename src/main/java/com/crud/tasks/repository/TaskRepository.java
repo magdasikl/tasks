@@ -51,5 +51,8 @@ public interface TaskRepository extends CrudRepository<Task, Long> {
 
     @Override
     Iterable<Task> findAll(Iterable<Long> longs);
+
+    @Override
+    long count();
 }
 

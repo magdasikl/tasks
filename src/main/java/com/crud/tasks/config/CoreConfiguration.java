@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.validation.MessageCodesResolver;
 import org.springframework.validation.Validator;
 import org.springframework.web.client.RestTemplate;
@@ -26,7 +27,7 @@ import java.util.List;
 import static com.google.common.base.Predicates.and;
 import static springfox.documentation.builders.PathSelectors.regex;
 
-
+@EnableScheduling
 @Configuration
 @EnableSwagger2
 public class CoreConfiguration implements WebMvcConfigurer {
