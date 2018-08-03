@@ -11,4 +11,6 @@ public class Mail {
     private String massage;
     private String toCc;
 
+    
+
 }

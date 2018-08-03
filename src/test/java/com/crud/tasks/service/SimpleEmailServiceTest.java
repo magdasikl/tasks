@@ -30,7 +30,7 @@ public class SimpleEmailServiceTest {
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMassage());
-        if (mail.getToCc().equals("") ) {
+        if (mail.getToCc()!=null && ! mail.getToCc().equals ("")) {
             mailMessage.setCc(mail.getToCc());
         }
 
