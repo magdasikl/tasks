@@ -1,9 +1,6 @@
 package com.crud.tasks.service;
 
-import com.crud.tasks.domain.TrelloBoard;
-import com.crud.tasks.domain.TrelloBoardDto;
-import com.crud.tasks.domain.TrelloList;
-import com.crud.tasks.domain.TrelloListDto;
+import com.crud.tasks.domain.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -53,6 +50,17 @@ public class TrelloServiceTest {
     }
     @Test
     public void createdTrelloCard() {
+        //Given
+        TrelloCardDto trelloCardDto = new TrelloCardDto("name","description","pos","list1");
+        TrelloAttachmentsTrelloDto trelloAttachmentsTrelloDto = new TrelloAttachmentsTrelloDto(1,12);
+        TrelloAttachmentsDto trelloAttachmentsDto = new TrelloAttachmentsDto(trelloAttachmentsTrelloDto);
+        TrelloBadgesDto trelloBadgesDto = new TrelloBadgesDto(12,trelloAttachmentsDto);
+        CreatedTrelloCardDto newCard = new CreatedTrelloCardDto("1",trelloBadgesDto,"NewCard","url");
+        when(trelloService.createdTrelloCard(trelloCardDto)).thenReturn(newCard);
+        //When
+        CreatedTrelloCardDto card = trelloService.createdTrelloCard(trelloCardDto);
+        //then
+        assertEquals("NewCard", card.getName());
 
     }
 }
