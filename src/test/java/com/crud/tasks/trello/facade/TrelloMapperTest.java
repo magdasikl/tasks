@@ -37,20 +37,20 @@ public class TrelloMapperTest {
     @Test
     public void testMapToBoards() {
         //Given
-        List<TrelloListDto> TrelloListDto = new ArrayList<>();
-        TrelloListDto.add(new TrelloListDto("1", "list1", false));
-        TrelloListDto.add(new TrelloListDto("2", "list2", false));
-        TrelloListDto.add(new TrelloListDto("3", "list3", true));
+        List<TrelloListDto> trelloListDto = new ArrayList<>();
+        trelloListDto.add(new TrelloListDto("1", "list1", false));
+        trelloListDto.add(new TrelloListDto("2", "list2", false));
+        trelloListDto.add(new TrelloListDto("3", "list3", true));
 
-        List<TrelloBoardDto> TrelloBoardDto = new ArrayList<>();
-        TrelloBoardDto.add(new TrelloBoardDto("1", "board1", TrelloListDto));
-        TrelloBoardDto.add(new TrelloBoardDto("2", "board2", TrelloListDto));
-        TrelloBoardDto.add(new TrelloBoardDto("3", "board3", TrelloListDto));
+        List<TrelloBoardDto> trelloBoardDto = new ArrayList<>();
+        trelloBoardDto.add(new TrelloBoardDto("1", "board1", trelloListDto));
+        trelloBoardDto.add(new TrelloBoardDto("2", "board2", trelloListDto));
+        trelloBoardDto.add(new TrelloBoardDto("3", "board3", trelloListDto));
         //When
-        List<TrelloBoard> trelloBoardList = trelloMapper.mapToBoards(TrelloBoardDto);
+        List<TrelloBoard> trelloBoardList = trelloMapper.mapToBoards(trelloBoardDto);
 //        List<TrelloBoardDto> trelloBoardDtoList = trelloMapper.mapToBoardsDto(trelloBoardList);
         //Then
-        assertEquals(TrelloBoardDto.size(), trelloBoardList.size());
+        assertEquals(trelloBoardDto.size(), trelloBoardList.size());
     }
 
     @Test
