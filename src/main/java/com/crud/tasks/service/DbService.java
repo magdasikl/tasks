@@ -31,7 +31,7 @@ public class DbService {
     public void deleteTaskById(Long id){
         repository.delete(id);
     }
-    public List<Task> getTasksByTitle(){
-        return repository.findTasksByTitle("test3");
+    public List<Task> getTasksByTitle(String tekst){
+        return repository.findTasksByTitle(tekst);
     }
 }
