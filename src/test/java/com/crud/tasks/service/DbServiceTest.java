@@ -4,23 +4,28 @@ import com.crud.tasks.domain.Task;
 import com.crud.tasks.repository.TaskRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
+
 public class DbServiceTest {
 
-    @Mock
+    @InjectMocks
     private DbService dbService;
+
+    @Mock
+    private TaskRepository repository;
 
     @Test
     public void testGetAllTasks() {
@@ -28,9 +33,10 @@ public class DbServiceTest {
         List<Task> listTask = new ArrayList<>();
         listTask.add(new Task(1L,"Task1","comment"));
         //when
-        when(dbService.getAllTasks()).thenReturn(listTask);
+        when(repository.findAll()).thenReturn(listTask);
+        List<Task> tasks = dbService.getAllTasks();
         //then
-        assertEquals("Task1",dbService.getAllTasks().get(0).getTitle());
+        assertEquals("Task1",tasks.get(0).getTitle());
 
     }
 
@@ -39,7 +45,7 @@ public class DbServiceTest {
         //Given
         Optional<Task> task = Optional.of(new Task(1L, "Task1", "comment"));
         //when
-        when(dbService.getTask(1L)).thenReturn(task);
+        when(repository.findById(1L)).thenReturn(task);
         //then
         assertEquals("Task1",dbService.getTask(1L).get().getTitle());
 
@@ -50,7 +56,7 @@ public class DbServiceTest {
         //Given
         Task task = new Task(1L, "Task1", "comment");
         //when
-        when(dbService.saveTask(task)).thenReturn(task);
+        when(repository.save(task)).thenReturn(task);
         //then
         assertEquals("Task1",dbService.saveTask(task).getTitle());
 
@@ -63,7 +69,7 @@ public class DbServiceTest {
         listTask.add(new Task(1L,"Task1","comment"));
         String tesk = "Task1";
         //when
-        when(dbService.getTasksByTitle(tesk)).thenReturn(listTask);
+        when(repository.findTasksByTitle(tesk)).thenReturn(listTask);
         //then
         assertEquals("Task1",dbService.getTasksByTitle(tesk).get(0).getTitle());
 
