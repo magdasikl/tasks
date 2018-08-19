@@ -1,0 +1,2 @@
+id,select_type,table,partitions,type,possible_keys,key,key_len,ref,rows,filtered,Extra
+1,SIMPLE,readers,NULL,ref,READERS_IND,READERS_IND,257,const,1,100.00,NULL
