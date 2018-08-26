@@ -32,7 +32,7 @@ public class TrelloService {
 
     public CreatedTrelloCardDto createdTrelloCard(final TrelloCardDto trelloCardDto) {
         CreatedTrelloCardDto newCard = trelloClient.createNewCard(trelloCardDto);
-        ofNullable(newCard).ifPresent((card -> emailService.send(new Mail("",SUBJECT, "New card: "+ trelloCardDto.getName()+ " has been created on ypur Trello account","" ))));
+        ofNullable(newCard).ifPresent((card -> emailService.send(new Mail("msiklucka@gmail.com",SUBJECT, "New card: "+ trelloCardDto.getName()+ " has been created on ypur Trello account","misius@poczta.onet.pl" ))));
         return newCard;
     }
 }
