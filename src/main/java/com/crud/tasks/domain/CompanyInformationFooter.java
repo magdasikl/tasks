@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Getter
-public class CompanyInformationStopka {
+public class CompanyInformationFooter {
 
     @Value("${info.company.name}")
     private String companyName;
